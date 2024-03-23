@@ -16,16 +16,16 @@ A preprint FemXpress: Systematic Analysis of X Chromosome Inactivation Heterogen
 ## Install
 To install FemXpress,make sure you need install some dependances,if you need more details on the dependences,look at the FemXpress-env.yaml file.
 set up conda environment for FemXpress
-'''
+```
 conda env create -f FemXpress-env.yaml
-'''
+```
 
 ## install FemXpress from zip package
-'''
+```
 conda activate FemXpress-env
 wget http://www.example.com/FemXpress.zip
 gunzip FemXpress.zip
-'''
+```
 
 ## Usage
 The current version of FemXpress was only developed based on single-cell sequencing data from 10×Genomics. It consists of two running steps:
