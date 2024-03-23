@@ -8,7 +8,7 @@ FemXpress is a powerful tool designed for a comprehensive analysis of XCI status
 2) to infer new potential escape genes,
 3) to infer the X-to-auto expression dose in different cell types.
 
-## Workflow of FemXpress
+#### Workflow of FemXpress
 To avoid relying on parental SNP information, we performed de novo discovery of SNP that exhibit parental origin differences using the alignment results of the pseudo-bulk scRNA-Seq sample. In order to minimize the impact of sequencing and analysis errors on SNP calling, we applied strict filtering criteria, including: 
 1) a minimum coverage of at least 2 reads supporting either of the two genotypes of the SNP,
 2) a minimum number of 2 cells with each genotype,
