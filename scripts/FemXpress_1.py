@@ -214,12 +214,11 @@ for record in vcf_reader:
     bed_file.write(f"{chrom}\t{start}\t{end}\n")
 bed_file.close()
 
-
-### ref:code:20230426_filter_snp.py
 fo_dic={}
 fo1_dic={}
 fo2_dic={}
 fo3_dic={}
+
 
 ### final filtered snp txt(after snp and manulal filtering)
 #fo_1=open(tmp_dir+'/freebayes_snp_ml_tmp_info.txt','w')
