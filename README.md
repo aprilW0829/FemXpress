@@ -13,18 +13,18 @@ Subsequently, linkage analysis was performed based on the identified high-confid
 A preprint FemXpress: Systematic Analysis of X Chromosome Inactivation Heterogeneity in Female Single-Cell RNA-Seq Samples provides an overview of the statistical models used in FemXpress. Ww ask that you cite this paper if you use FemXpress in work that leads to publication.This preprint is used for documentation and citation.
 
 
-Install
+# Install
 To install FemXpress,make sure you need install some dependances,if you need more details on the dependences,look at the FemXpress-env.yaml file.
 set up conda environment for FemXpress
 conda env create -f FemXpress-env.yaml
 
-install FemXpress from zip package
+# install FemXpress from zip package
 conda activate FemXpress-env
 wget http://www.example.com/FemXpress.zip
 gunzip FemXpress.zip
 
 
-Usage
+# Usage
 The current version of FemXpress was only developed based on single-cell sequencing data from 10×Genomics. It consists of two running steps:
 Step 1 : to obtain pre-processed barcode-SNP matrix based on the alignment bam file from cellranger’s output.
 According to how it works, it needs to have the following input files: BAM file for CellRanger alignment output, cell tag file (which can be meta information file that has been processed by Seurat)(possorted_genome_bam.bam), reference genome sequence file(.fa), and rmsk file.For instance:
