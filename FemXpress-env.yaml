@@ -1,4 +1,4 @@
-name: r_4.0
+name: FemXppress-env
 channels:
   - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free
   - conda-forge
