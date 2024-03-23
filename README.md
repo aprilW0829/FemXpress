@@ -5,7 +5,7 @@ FemXpress--tool that classifies the source of X chromosome inactivation of each 
 ### Overview
 FemXpress is a powerful tool designed for a comprehensive analysis of XCI status in female scRNA-Seq datasets. It has the following main functions: 
 1) to infer the source of X chromosome inactivation (paternal or maternal) for each cell,
-2) to infer new potential escape genes, and
+2) to infer new potential escape genes,
 3) to infer the X-to-auto expression dose in different cell types.
 
 To avoid relying on parental SNP information, we performed de novo discovery of SNP that exhibit parental origin differences using the alignment results of the pseudo-bulk scRNA-Seq sample. In order to minimize the impact of sequencing and analysis errors on SNP calling, we applied strict filtering criteria, including: 
