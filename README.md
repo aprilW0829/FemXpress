@@ -20,7 +20,7 @@ set up conda environment for FemXpress
 conda env create -f FemXpress-env.yaml
 ```
 
-## install FemXpress from zip package
+install FemXpress from zip package
 ```
 conda activate FemXpress-env
 wget http://www.example.com/FemXpress.zip
