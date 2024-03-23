@@ -31,12 +31,12 @@ gunzip FemXpress.zip
 The current version of FemXpress was only developed based on single-cell sequencing data from 10×Genomics. It consists of two running steps:
 Step 1 : to obtain pre-processed barcode-SNP matrix based on the alignment bam file from cellranger’s output.
 According to how it works, it needs to have the following input files: BAM file for CellRanger alignment output, cell tag file (which can be meta information file that has been processed by Seurat)(possorted_genome_bam.bam), reference genome sequence file(.fa), and rmsk file.For instance:
-'''
+```
 Python FemXpress_1.py possorted_genome_bam.bam genome.fa meta.txt rmsk.txt
-'''
+```
 ...will produce four barcode-SNP matrix files in the subdirectory ./FemXpress/result, result_matrix4.txt is the final matrix for FemXpress inference input that based on the SNP sites that are preserved under the strictest and most credible condition.
 
 Step 2 : run FemXpress using the barcode-SNP matrix obtained in the previous step.For instance:
-'''
+```
 python FemXpress_2.py result_matrix4.txt > nohup_real.txt
-'''
+```
