@@ -20,7 +20,7 @@ Subsequently, linkage analysis was performed based on the identified high-confid
 
 
 ## Citing FemXpress
-A preprint FemXpress: Systematic Analysis of X Chromosome Inactivation Heterogeneity in Female Single-Cell RNA-Seq Samples provides an overview of the statistical models used in FemXpress. Ww ask that you cite this paper if you use FemXpress in work that leads to publication.This preprint is used for documentation and citation.
+A preprint FemXpress: Systematic Analysis of X Chromosome Inactivation Heterogeneity in Female Single-Cell RNA-Seq Samples provides an overview of the statistical models used in FemXpress. We ask that you cite this paper if you use FemXpress in work that leads to publication.This preprint is used for documentation and citation.
 
 ## Install
 To install FemXpress, make sure you need install some dependances,if you need more details on the dependences, look at the FemXpress-env.yaml file.
