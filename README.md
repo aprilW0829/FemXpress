@@ -23,7 +23,7 @@ Subsequently, linkage analysis was performed based on the identified high-confid
 A preprint FemXpress: Systematic Analysis of X Chromosome Inactivation Heterogeneity in Female Single-Cell RNA-Seq Samples provides a detailed overview of the statistical models used in FemXpress. We ask that you cite this paper if you use FemXpress in work that leads to publication.This preprint is used for documentation and citation.
 
 ## Install
-To install FemXpress, make sure you need install some dependances,if you need more details on the dependences, look at the FemXpress-env.yaml file.
+To install FemXpress, make sure you need install some dependances, if you need more details on the dependences, look at the FemXpress-env.yaml file.
 set up conda environment for FemXpress
 ```
 conda env create -f FemXpress-env.yaml
@@ -46,7 +46,7 @@ According to how it works, it needs to have the following input files: BAM file 
 ```
 python FemXpress_1.py possorted_genome_bam.bam genome.fa meta.txt rmsk.txt
 ```
-...will produce four barcode-SNP matrix files in the subdirectory ./FemXpress/result, result_matrix4.txt is the final matrix for FemXpress inference input that based on the SNP sites that are preserved under the strictest and most credible condition.
+...will produce four barcode-SNP matrix files in the subdirectory ./FemXpress/result, result_matrix4.csv is the final matrix for FemXpress inference input that based on the SNP sites that are preserved under the strictest and most credible condition.
 
 Step 2 : run FemXpress using the barcode-SNP matrix obtained in the previous step.For instance:
 ```
