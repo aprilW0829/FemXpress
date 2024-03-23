@@ -17,31 +17,21 @@ import math
 import resource
 import seaborn as sns
 from optparse import OptionParser
+import argparse
 
+parser = argparse.ArgumentParser(description='preprocess of FemXpress')
 
-'''
-def main():
-    parser = OptionParser()
-    parser.add_option("-b", "--bam", dest="filename", help="input bam file from CellRanger output")
-    parser.add_option("-g", "--genome", dest="filename", help="input genome")
-    parser.add_option("-a", "--meta", dest="filename", help="input meta information of barcodes")
-    parser.add_option("-r", "--rmsk", dest="filename", help="rmsk file")
-    parser.add_option("-v", "--verbose", action="store_true", dest="verbose", default=False, help="print verbose output")
-    (options, args) = parser.parse_args()
-    args=parser.parse_args()
-    #print(args)
-    if options.verbose:
-        print("Verbose mode enabled")
+parser.add_argument("-b","--bam", type=str,help="input bam file from CellRanger output")
+parser.add_argument("-g","--genome", type=str,help="input genome")
+parser.add_argument("-a","--meta", type=str,help="input meta information of barcodes")
+parser.add_argument("-r","--rmsk", type=str,help="rmsk file")
+parser.add_argument("-v", "--verbose", action="store_true", dest="verbose", default=False, help="print verbose output")
+args=parser.parse_args()
 
-    if options.filename:
-        print("Input file: %s" % options.filename)
-    else:
-        print("No input file specified")
-
-if __name__ == "__main__":
-    main()
-'''
-
+# print(args.bam) bam
+# print(args.genome) genome
+# print(args.meta) meta
+# print(args.rmsk) rmsk
 
 ## imput_file
 # sys.argv[1]:input_bam (unfiltered bam from cellranger output)
@@ -85,7 +75,8 @@ def all_path(dirname,defined_txt_str):
 
 ################################################# step1:
 #### get index for all bam and get chrX bam
-input_bam=sys.argv[1]
+# input_bam=sys.argv[1]
+input_bam=args.bam
 
 subprocess.run(["samtools", "index", input_bam, "-@ 8"])
 print('create index for all.bam!')
@@ -106,7 +97,8 @@ print('create index for chrX.bam!')
 
 #### already celltype annotation done!
 #### get metadata txt of scRNA-data
-f_meta=open(sys.argv[3],'r')
+#f_meta=open(sys.argv[3],'r')
+f_meta=args.meta
 fo_tmp1=open(tmp_dir+'/all_barcodes.txt','w')
 
 start_pos = None
@@ -150,18 +142,12 @@ output_bam1=tmp_dir+'/filtered_chrX.bam'
 bam_in=pysam.AlignmentFile(input_bam, "rb")
 bam_out=pysam.AlignmentFile(output_bam1, "wb", template=bam_in)
 #chrX;6054450    1;0;0;0 A       1
-#chrX;6054451    0;1;0;0 C       1
 for read in bam_in.fetch( until_eof=True):
-    #print(read.tags)
-    #print(type(read.tags))
-    #print(dict(read.tags)['CB'])
     if read.has_tag('CB'):
-        #print(dict(read.tags)['CB'])
         cb_tags=dict(read.tags)['CB']
         #print(cb_tags)
         #if read.get_tag('CB') in trimmed_barcode_list:
         if cb_tags in trimmed_barcode_list:
-            #print(cb_tags)
             bam_out.write(read)
 print('get filtered bam done!')
 
@@ -174,17 +160,14 @@ bam_file=tmp_dir+'/filtered_chrX.bam'
 subprocess.run(["samtools", "index", bam_file, "-@ 8"])
 print('create index for filtered_chrX.bam!')
 
-
-ref_file=sys.argv[2]
+#ref_file=sys.argv[2]
+ref_file=args.genome
 bam_file=tmp_dir+'/filtered_chrX.bam'
 output_vcf=tmp_dir+'/filtered_freebayes.vcf'
-### freebayes version:0.9
+### freebayes version:1.3.6
 print('call SNP using freebyes,start!')
 cmd2 = f"freebayes -f {ref_file} {bam_file} > {output_vcf}"
 output=subprocess.check_output(cmd2,shell=True)
-#subprocess.run(['freebayes','-f',ref_file,bam_file,'>',output_vcf])
-#with open('w') as outfile:
-#    outfile.write(output.encode())
 print('get vcf for filtered chrX bam done!')
 
 
@@ -236,7 +219,8 @@ print('get fasta of chrX done!')
 # construct simple repeat loci dic
 # def input rmsk txt and get simple_repeat_loci_txt
 simple_repeat_snp_dic={}
-f=open(sys.argv[4],'r')
+#f=open(sys.argv[4],'r')
+f=oen(args.rmsk,'r')
 #def get simple_repeat_location(rmsk):
 for a in f:
     a=a.split('\t')
@@ -280,7 +264,8 @@ def get_up_down20bp_bed_sequence_dic(f,genome1,simple_repeat_snp_dic):
 
 # get input snp bed txt(location)
 # input:snp bed from last step
-genome = sys.argv[2]
+#genome = sys.argv[2]
+genome=args.genome
 f1=open(tmp_dir+'/filtered_freebayes_snps.bed','r')
 get_up_down20bp_bed_sequence_dic(f1,genome,simple_repeat_snp_dic)
 for key in snp_updown20bp_bed_sequence_dic.keys():
@@ -369,7 +354,6 @@ for a in fo3_dic.keys():
 
 ############################################ single barcode's bam split by barcode from filtered_chrX.bam,filtering snp by judge base counts in all barcodes' ratio,plotting unfiltered snps' distribution and filtered snps' distribution,get final snp-barcode matrix
 #### set to incerease txt number at the same time
-#os.system("ulimit -n 65535")
 soft_limit, hard_limit = resource.getrlimit(resource.RLIMIT_NOFILE)
 print("txt number's limit:", soft_limit, hard_limit)
 new_limit = 65535
@@ -396,7 +380,6 @@ for outfile in barcode_files.values():
     print(str('get ')+str(outfile)+str('.bam done!'))
 
 
-
 ############################################# step2:
 ### create index for each barcode's bam
 all_path(inter_base_dir,'bam')
@@ -410,7 +393,8 @@ all_path(inter_base_dir,'.bam')
 
 ### count by bam-readcount for each barcode
 bam_files=sgtxt_list
-reference_fa=sys.argv[2]
+#reference_fa=sys.argv[2]
+reference_fa=args.genome
 bed_file=tmp_dir+'/filtered_freebayes_snps_manual_info.txt'
 bed_file2=tmp_dir+'/filtered_freebayes_snps.bed'
 for bam_file in bam_files:
@@ -439,8 +423,6 @@ all_path(inter_base_dir,'-1_base_count.txt')
 count_files=sgtxt_list
 for count_file in count_files:
     # chrX;6403392    0;0;0;1 G       1
-    #print(count_file)
-    #print(count_file[:18])
     df = pd.read_csv(inter_base_dir+'/'+count_file,names=['loci','A;C;G;T','ref','total_count'],sep='\t')
     fw=open(inter_base_dir+'/'+count_file[:18]+'_merged_base_count.txt','w')
     df = df.drop_duplicates(subset=['loci'])
@@ -856,9 +838,6 @@ for i,file in enumerate(final_path):
     df_list.append(df)
     snp_list=df['Chromosome:Position'].values
     dict_res[name]=df[['A;C;G;T']]
-#   print(name)
-#   print(str(n))
-#print(dict_res.values())
 
 column = 'A;C;G;T'
 #dfs = list(df_list)
@@ -875,7 +854,7 @@ data.columns=barcode_list
 print('create barcode-snp matrix1 done!')
 
 data_t=data.T
-data_t.to_csv(result_dir+'/result_matrix1_1.csv',sep='\t',mode='w',header=True,index=True)
+data_t.to_csv(result_dir+'/result_matrix1.csv',sep='\t',mode='w',header=True,index=True)
 print('get filtered barcode-snp matrix1 done!')
 
 
