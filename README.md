@@ -31,7 +31,7 @@ conda env create -f FemXpress-env.yaml
 install FemXpress from zip package
 ```
 conda activate FemXpress-env
-wget http://www.example.com/FemXpress.zip](https://github.com/wangxin970829/FemXpress/archive/refs/heads/main.zip
+wget https://github.com/wangxin970829/FemXpress/archive/refs/heads/main.zip
 unzip main.zip
 cd FemXpress-main/scripts
 export PATH=$PATH:/path/to/your/FemXpress-main/scripts/FemXpress_1.py
