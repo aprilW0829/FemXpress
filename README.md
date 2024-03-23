@@ -1,9 +1,9 @@
 # FemXpress
-FemXpress--tool that classifies the source of X chromosome inactivation of each female cell 
+FemXpress--tool that classifies the source of X chromosome inactivation of each female cell.
 
 ## User manual and guide
 ### Overview
-FemXpress is a powerful tool designed for a comprehensive analysis of XCI status in female scRNA-Seq datasets. It has the following main functions: 
+FemXpress is a Python package,a powerful tool designed for a comprehensive analysis of XCI status in female scRNA-Seq datasets. It has the following main functions: 
 1) to infer the source of X chromosome inactivation (paternal or maternal) for each cell,
 2) to infer new potential escape genes,
 3) to infer the X-to-auto expression dose in different cell types.
