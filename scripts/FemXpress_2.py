@@ -9,6 +9,15 @@ from scipy.optimize import curve_fit
 import matplotlib.pyplot as plt
 import seaborn as sns
 import random
+import argparse
+
+parser = argparse.ArgumentParser(description='inference of FemXpress,\nExample: python FemXpress_2.py -m result_matrix4.csv -a /data2/wangxin/database/genome/gencode.vM25.chr_patch_hapl_scaff.basic.annotation.gtf > nohup_real.txt')
+parser.add_argument("-m","--matrix", type=str,help="output result_matrix4.csv generated in the previous step")
+parser.add_argument("-a","--annot", type=str,help="gene annotation txt[gtf]")
+parser.add_argument("-v", "--verbose", action="store_true", dest="verbose", default=False, help="print verbose output")
+
+args=parser.parse_args()
+#print(args.matrix)
 
 inference_dir='./FemXpress/inference'
 #inference_dir='/data5/wangxin/20220923fgh_mouse_brain/puplic_data/20231123_Cell_Stem_Cell_The_single-cell_and_spatial_transcriptional_landscape_of_human_gastrulation_and_early_brain_development/FemXpress/W43_subclusterX/20240220_inference/'+sys.argv[3]
