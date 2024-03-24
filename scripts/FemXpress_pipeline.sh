@@ -1,8 +1,8 @@
 #!usr/bin/bash
 
 # step1:
-# data process
-python FemXpress_1.py possorted_genome_bam.bam mm10.fa metadata.txt mm10.rmsk.txt 
+# data preprocess
+python FemXpress_1.py -b possorted_genome_bam.bam -g genome.fa -e meta.txt -r rmsk.txt
 
 # step2:
 # FemXpress inference clustering and escape genes
