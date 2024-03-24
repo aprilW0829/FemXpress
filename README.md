@@ -43,6 +43,24 @@ export PATH=$PATH:/path/to/your/FemXpress-main/scripts/FemXpress_2.py
 The current version of FemXpress was only developed based on single-cell sequencing data from 10×Genomics. It consists of two running steps:
 Step 1 : to obtain pre-processed barcode-SNP matrix based on the alignment bam file from cellranger’s output.
 According to how it works, it needs to have the following input files: BAM file for CellRanger alignment output, cell tag file (which can be meta information file that has been processed by Seurat)(possorted_genome_bam.bam), reference genome sequence file(.fa), and rmsk file.For instance:
+
+Run with no arguments for command-line help:
+```
+$ python FemXpress_1.py --help
+usage: FemXpress_1.py [-h] [-b BAM] [-g GENOME] [-m META] [-r RMSK] [-v]
+
+preprocess of FemXpress, Example:python FemXpress_1.py -b possorted_genome_bam.bam -g genome.fa -m meta.txt -r rmsk.txt
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -b BAM, --bam BAM     input bam file from CellRanger output
+  -g GENOME, --genome GENOME
+                        input genome
+  -m META, --meta META  input meta information of barcodes
+  -r RMSK, --rmsk RMSK  rmsk file
+  -v, --verbose         print verbose output
+```
+
 ```
 python FemXpress_1.py possorted_genome_bam.bam genome.fa meta.txt rmsk.txt
 ```
