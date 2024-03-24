@@ -26,7 +26,8 @@ A preprint FemXpress: Systematic Analysis of X Chromosome Inactivation Heterogen
 To install FemXpress, make sure you need install some dependances,including [freebayes](https://github.com/freebayes/freebayes), [samtools](https://github.com/samtools/samtools), [bam-readcount](https://github.com/genome/bam-readcount), and some commonly used python packages,including, . You can choose to install these packages yourself, If you need more details on the dependences, look at [FemXpress-env.yaml](https://github.com/wangxin970829/FemXpress/blob/main/FemXpress-env.yaml). However, this method may encounter incompatibility between installation packages, so it is not recommended.
 
 In an easier way, you can follow the steps below to install the required packages in a new environment with one click.
-set up conda environment for FemXpress
+
+Set up conda environment for FemXpress
 ```
 conda env create -f FemXpress-env.yaml
 ```
