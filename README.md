@@ -94,6 +94,6 @@ The result subdirectory generates four matrix files(barcodes in rows,SNP sites i
 |TTCCTAAGTCGTCATA-1|2;0;0;0|.;.;.;.|.;.;.;.|.;.;.;.|......|
 |CCTTCAGGTGTAAATG-1|.;.;.;.|.;.;.;.|.;.;.;.|.;.;.;.|......|
 |CCTTCAGGAGTACATG-1|.;.;.;.|0;3;1;0|.;.;.;.|.;.;.;.|......|
-......
+|......|......|......|......|......|......|
 
 The inference subdirectory is generated as an inferred result for each cell by FemXpress, it contains 18 files, of which escape_pos_list_method_3.txt is the inferred new potential escape genes, clusters_vote_method_1.tsv is the classification result inferred(0 and 1 are the main two categories, and 2 is not successfully classified by FemXpress).
