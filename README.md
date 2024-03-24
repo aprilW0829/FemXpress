@@ -27,7 +27,7 @@ To install FemXpress, make sure you need install some dependances,including [fre
 
 In an easier way, you can follow the steps below to install the required packages in a new environment with one click.
 
-Set up conda environment for FemXpress
+Set up conda environment and install the required packages for FemXpress
 ```
 conda env create -f FemXpress-env.yaml
 ```
