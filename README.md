@@ -16,7 +16,7 @@ To avoid relying on parental SNP information, we performed de novo discovery of 
 4) sorting the remaining potential SNPs based on the ratio of reads for each genotype at the locus and removing the top and bottom 10% of SNPs with the highest and lowest ratios, respectively, as they are likely introduced by sequencing errors in high coverage regions (Fig a-c).
 
 Subsequently, linkage analysis was performed based on the identified high-confidence SNPs. We counted the genotypes of two SNPs that appear simultaneously in each cell, considering them linked genotypes only if both genotypes are present in at least 80% of cells (Fig d). Next, we conducted an extended linkage scoring by combining linked genotypes into longer chains of linked loci. The pair of haplotypes with the highest number of linked loci was selected as the genotypes of the parental source X chromosome (Fig e). Then, when the haplotypes of the parents were phased, the origin of the X chromosome for each cell was determined by a voting method. Each haplotype received one vote if the cell carried an allele base from that haplotype, and the cell was classified to have that haplotype if the votes were higher than those of the other haplotype. Finally, in the cells that were already classified with the same parental source of the inactivated X chromosome, we examined the frequency of concurrent parental origin genotypes at each SNP locus to identify potential XCI escaping gene derived SNPs(Fig f).
-![image](https://github.com/wangxin970829/FemXpress/blob/main/images/workflow.jpg)
+
 
 
 ## Citing FemXpress
