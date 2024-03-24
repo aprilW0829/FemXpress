@@ -144,7 +144,7 @@ clusters_vote_method_1.tsv
 |CAATCGACAGTTCCAA-1|0|
 |CAAGCTATCTGCTTAT-1|0|
 
-The [visulization](https://github.com/wangxin970829/FemXpress/tree/main/test/output/visulization) subdirectory generates four pdf files.
+The [visulization](https://github.com/wangxin970829/FemXpress/tree/main/test/output/visulization) subdirectory generates four pdf files and two text files used for visualization.
 
 
 
