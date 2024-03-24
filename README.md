@@ -23,7 +23,9 @@ Subsequently, linkage analysis was performed based on the identified high-confid
 A preprint FemXpress: Systematic Analysis of X Chromosome Inactivation Heterogeneity in Female Single-Cell RNA-Seq Samples provides a detailed overview of the statistical models used in FemXpress. We ask that you cite this paper if you use FemXpress in work that leads to publication.This preprint is used for documentation and citation.
 
 ## Install
-To install FemXpress, make sure you need install some dependances, if you need more details on the dependences, look at the FemXpress-env.yaml file.
+To install FemXpress, make sure you need install some dependances,including freebayes, samtools, bam-readcount, and some commonly used python packages,including, . You can choose to install these packages yourself, If you need more details on the dependences, look at the FemXpress-env.yaml file. However, this method may encounter incompatibility between installation packages, so it is not recommended.
+
+In an easier way, you can follow the steps below to install the required packages in a new environment with one click.
 set up conda environment for FemXpress
 ```
 conda env create -f FemXpress-env.yaml
@@ -63,10 +65,10 @@ optional arguments:
   -v, --verbose         print verbose output
 ```
 
-...will produce four barcode-SNP matrix files in the subdirectory ./FemXpress/result, result_matrix4.csv is the final matrix for FemXpress inference input that based on the SNP sites that are preserved under the strictest and most credible condition.
+...will produce four barcode-SNP matrix files in the subdirectory ./FemXpress/result, result_matrix4.csv is the final matrix for FemXpress inference as input that based on the SNP sites that are preserved under the strictest and most credible condition.
 
 ### Step 2 : 
-Run FemXpress using the barcode-SNP matrix obtained in the previous step.For instance:
+Run FemXpress using the barcode-SNP matrix obtained in the previous step. For instance:
 ```
 $ python FemXpress_2.py --help
 usage: FemXpress_2.py [-h] [-m MATRIX] [-a ANNOT] [-v]
