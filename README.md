@@ -88,13 +88,12 @@ The output will generate three subdirectories in the ./FemXpress directory, whic
 The tmp subdirectory contains the generated intermediate files such as histograms of the statistical distribution of the SNPs obtained at the 4 thresholds,
 
 The result subdirectory generates four matrix files(barcodes in rows,SNP sites in columns) corresponding to the four SNP sites file under the ./FexmXpress/tmp, for example:
-|                  |chrX;159974518|chrX;147053550|chrX;17564774|chrX;47919892|chrX;72949862|chrX;167737585|chrX;151606459|......|
+|                  |chrX;159974518|chrX;147053550|chrX;17564774|chrX;47919892|chrX;72949862|chrX;167737585|......|
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
-|CCTTCAGGTGTAAATG-1|.;.;.;.|.;.;.;.|.;.;.;.|4;0;0;1|.;.;.;.|.;.;.;.|.;.;.;.|......|
-|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
-|TTCCTAAGTCGTCATA-1|2;0;0;0|.;.;.;.|.;.;.;.|.;.;.;.|.;.;.;.|2;0;1;0|.;.;.;.|......|
-|CCTTCAGGTGTAAATG-1|.;.;.;.|.;.;.;.|.;.;.;.|.;.;.;.|.;.;.;.|.;.;.;.|.;.;.;.|......|
-|CCTTCAGGAGTACATG-1|.;.;.;.|0;3;1;0|.;.;.;.|.;.;.;.|.;.;.;.|.;.;.;.|.;.;.;.|......|
+|CCTTCAGGTGTAAATG-1|.;.;.;.|.;.;.;.|.;.;.;.|4;0;0;1|.;.;.;.|.;.;.;.|......|
+|TTCCTAAGTCGTCATA-1|2;0;0;0|.;.;.;.|.;.;.;.|.;.;.;.|.;.;.;.|2;0;1;0|......|
+|CCTTCAGGTGTAAATG-1|.;.;.;.|.;.;.;.|.;.;.;.|.;.;.;.|.;.;.;.|.;.;.;.|......|
+|CCTTCAGGAGTACATG-1|.;.;.;.|0;3;1;0|.;.;.;.|.;.;.;.|.;.;.;.|.;.;.;.|......|
 ......
 
 The inference subdirectory is generated as an inferred result for each cell by FemXpress, it contains 18 files, of which escape_pos_list_method_3.txt is the inferred new potential escape genes, clusters_vote_method_1.tsv is the classification result inferred(0 and 1 are the main two categories, and 2 is not successfully classified by FemXpress).
