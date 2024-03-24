@@ -18,9 +18,9 @@ parser.add_argument("-v", "--verbose", action="store_true", dest="verbose", defa
 
 args=parser.parse_args()
 #print(args.matrix)
+#print(args.annot)
 
 inference_dir='./FemXpress/inference'
-#inference_dir='/data5/wangxin/20220923fgh_mouse_brain/puplic_data/20231123_Cell_Stem_Cell_The_single-cell_and_spatial_transcriptional_landscape_of_human_gastrulation_and_early_brain_development/FemXpress/W43_subclusterX/20240220_inference/'+sys.argv[3]
 
 dir_paths=[inference_dir]
 for dir_path in dir_paths:
@@ -30,7 +30,8 @@ for dir_path in dir_paths:
     else:
         print('inference dir already exist!')
 
-fin = open(sys.argv[1], "r")
+#fin = open(sys.argv[1], "r")
+fin = open(args.matrix,'r')
 #f_pos_gene = open("pos_gene_map.txt", "r")
 fout_1 = open("clusters_vote_method_1.tsv", "w")
 fout_2 = open("clusters_vote_method_2.tsv", "w")
@@ -1627,7 +1628,8 @@ else:
     qualified_intersection = qualified_set_1.intersection(qualified_set_2)
 
     if len(sys.argv) == 3:
-        f_annot = open(sys.argv[2], "r")
+        #f_annot = open(sys.argv[2], "r")
+        f_annot = open(args.annot,'r')
         gene_dict = {}
         for line in f_annot.readlines():
             if line[0] == "#":
