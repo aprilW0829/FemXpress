@@ -46,7 +46,7 @@ export PATH=$PATH:/path/to/your/FemXpress-main/scripts/FemXpress_2.py
 The current version of FemXpress was only developed based on single-cell sequencing data from 10×Genomics. The details of the input of FemXpress can be found in the [input](https://github.com/wangxin970829/FemXpress/tree/main/test/input)
 
 It consists of two running steps:
-### Step 1 : 
+### Step 1: 
 To obtain pre-processed barcode-SNP matrix based on the alignment bam file from cellranger’s output.
 According to how it works, it needs to have the following input files: BAM file for CellRanger alignment output, cell tag file (which can be meta information file that has been processed by Seurat)(possorted_genome_bam.bam), reference genome sequence file(.fa), and rmsk file.For instance:
 
@@ -69,7 +69,7 @@ optional arguments:
 
 ...will produce four barcode-SNP matrix files in the subdirectory ./FemXpress/result, result_matrix4.csv is the final matrix for FemXpress inference as input that based on the SNP sites that are preserved under the strictest and most credible condition.
 
-### Step 2 : 
+### Step 2: 
 Run FemXpress using the barcode-SNP matrix obtained in the previous step. For instance:
 ```
 $ python FemXpress_2.py --help
@@ -87,8 +87,30 @@ optional arguments:
 
 ```
 
+### Step3:
+You can visulization outut of FemXpress using the following procedures using txt in the previous step. For instance:
+```
+$ Rscript FemXpress_visulization.R --help
+Usage: subclusterX_visulization.R [options]
+
+Options:
+        -i SAMPLE, --sample=SAMPLE
+                sample name
+        -r RDS, --rds=RDS
+                seurat_rds
+        -c CLUSTER, --cluster=CLUSTER
+                cluster.tsv
+        -x CHRX_GENES, --chrX_genes=CHRX_GENES
+                chrX_genes_txt
+        -h, --help
+                Show this help message and exit
+
+Example: FemXpress_visulization.R -i sample -r rds -c clusters.tsv -x chrX_genes.txt
+
+```
+
 ## Output
-The output will generate three subdirectories in the ./FemXpress directory, which contains tmp, result, inference.  The details of the ouput of FemXpress can be found in the [output](https://github.com/wangxin970829/FemXpress/tree/main/test/output)
+The output will generate three subdirectories in the ./FemXpress directory, which contains tmp, result, inference，visulization.  The details of the ouput of FemXpress can be found in the [output](https://github.com/wangxin970829/FemXpress/tree/main/test/output)
 
 The tmp subdirectory contains the generated intermediate files such as histograms of the statistical distribution of the SNPs obtained at the 4 thresholds,
 
@@ -120,6 +142,8 @@ clusters_vote_method_1.tsv
 |TCCAGAAGTCGTGATT-1|1|
 |CAATCGACAGTTCCAA-1|0|
 |CAAGCTATCTGCTTAT-1|0|
+
+The visulization subdirectory generates four pdf files.
 
 
 
