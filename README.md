@@ -87,7 +87,8 @@ optional arguments:
 ```
 
 ## Output
-The output will generate three subdirectories in the ./FemXpress directory, which contains tmp, result, inference.  
+The output will generate three subdirectories in the ./FemXpress directory, which contains tmp, result, inference.  The details of the ouput of FemXpress can be found in 
+
 
 The tmp subdirectory contains the generated intermediate files such as histograms of the statistical distribution of the SNPs obtained at the 4 thresholds,
 
