@@ -43,8 +43,9 @@ export PATH=$PATH:/path/to/your/FemXpress-main/scripts/FemXpress_2.py
 ```
 
 ## Usage
-The current version of FemXpress was only developed based on single-cell sequencing data from 10×Genomics. It consists of two running steps:
+The current version of FemXpress was only developed based on single-cell sequencing data from 10×Genomics. The details of the input of FemXpress can be found in the [input](https://github.com/wangxin970829/FemXpress/tree/main/test/input)
 
+It consists of two running steps:
 ### Step 1 : 
 To obtain pre-processed barcode-SNP matrix based on the alignment bam file from cellranger’s output.
 According to how it works, it needs to have the following input files: BAM file for CellRanger alignment output, cell tag file (which can be meta information file that has been processed by Seurat)(possorted_genome_bam.bam), reference genome sequence file(.fa), and rmsk file.For instance:
@@ -87,8 +88,7 @@ optional arguments:
 ```
 
 ## Output
-The output will generate three subdirectories in the ./FemXpress directory, which contains tmp, result, inference.  The details of the ouput of FemXpress can be found in 
-
+The output will generate three subdirectories in the ./FemXpress directory, which contains tmp, result, inference.  The details of the ouput of FemXpress can be found in the [output](https://github.com/wangxin970829/FemXpress/tree/main/test/output)
 
 The tmp subdirectory contains the generated intermediate files such as histograms of the statistical distribution of the SNPs obtained at the 4 thresholds,
 
