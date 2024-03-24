@@ -88,7 +88,7 @@ optional arguments:
 ```
 
 ### Step3:
-You can visulization outut of FemXpress using the following procedures using txt in the previous step. For instance:
+You can visulization FemXpress's inference result using the following procedures using txt in the previous step. For instance:
 ```
 $ Rscript FemXpress_visulization.R --help
 Usage: subclusterX_visulization.R [options]
@@ -106,8 +106,9 @@ Options:
                 Show this help message and exit
 
 Example: FemXpress_visulization.R -i sample -r rds -c clusters.tsv -x chrX_genes.txt
-
 ```
+Or you can choose to write codes to make more beautiful pdf.
+
 
 ## Output
 The output will generate three subdirectories in the ./FemXpress directory, which contains tmp, result, inference，visulization.  The details of the ouput of FemXpress can be found in the [output](https://github.com/wangxin970829/FemXpress/tree/main/test/output)
