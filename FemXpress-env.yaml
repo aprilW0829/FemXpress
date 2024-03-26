@@ -96,4 +96,3 @@ dependencies:
   - samtools=1.0.0
   - pip:
       - biopython==1.83
-prefix: /path/FemXpress-env
