@@ -27,11 +27,6 @@ To install FemXpress, make sure you need install some dependances,including [fre
 
 In an easier way, you can follow the steps below to install the required packages in a new environment with one click.
 
-Set up conda environment and install the required packages for FemXpress
-```
-conda env create -f FemXpress-env.yaml
-```
-
 Install FemXpress from zip package
 ```
 conda activate FemXpress-env
@@ -40,6 +35,12 @@ unzip main.zip
 cd FemXpress-main/scripts
 export PATH=$PATH:/path/to/your/FemXpress-main/scripts/FemXpress_1.py
 export PATH=$PATH:/path/to/your/FemXpress-main/scripts/FemXpress_2.py
+```
+
+Set up conda environment and install the required packages for FemXpress
+```
+cd /path/to/your/FemXpress-main/
+conda env create -f FemXpress-env.yaml
 ```
 
 ## Usage
