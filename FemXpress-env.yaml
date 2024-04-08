@@ -56,7 +56,7 @@ dependencies:
   - matplotlib=3.2.2=1
   - matplotlib-base=3.2.2=py38h5d868c9_1
   - ncurses=6.4.20240210=h59595ed_0
-  - numpy=1.19.5=py38h8246c76_3
+  - numpy=1.22.0=py38h6ae9a64_1
   - openssl=1.1.1w=hd590300_0
   - packaging=24.0=pyhd8ed1ab_0
   - pandas=1.1.4=py38h0ef3d22_0
@@ -93,6 +93,10 @@ dependencies:
   - xz=5.2.6=h166bdaf_0
   - zlib=1.2.13=hd590300_5
   - zstd=1.5.5=hfc55251_0
-  - samtools=1.0.0
   - pip:
       - biopython==1.83
+      - chardet==5.2.0
+      - joblib==1.3.2
+      - scikit-learn==1.3.2
+      - threadpoolctl==3.4.0
+prefix: FemXpress-env
