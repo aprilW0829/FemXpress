@@ -41,6 +41,7 @@ Set up conda environment and install the required packages for FemXpress
 ```
 cd /path/to/your/FemXpress-main/
 conda env create -f FemXpress-env.yaml
+conda activate FemXpress-env
 ```
 
 ## Usage
