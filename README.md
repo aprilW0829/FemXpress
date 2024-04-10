@@ -24,7 +24,7 @@ A preprint FemXpress: Systematic Analysis of X Chromosome Inactivation Heterogen
 
 ## Install
 To install FemXpress, make sure you need install some dependances,including [freebayes](https://github.com/freebayes/freebayes), [samtools](https://github.com/samtools/samtools), [bam-readcount](https://github.com/genome/bam-readcount), and some commonly used python packages,including, . You need to make sure these packages were installed beforehand. 
-And you need more details on the dependences, look at [FemXpress-env.yaml](https://github.com/wangxin970829/FemXpress/blob/main/requirements.txt). 
+And you need more details on the dependences, look at [requirements.txt](https://github.com/wangxin970829/FemXpress/blob/main/requirements.txt). 
 
 
 Install FemXpress from zip package
