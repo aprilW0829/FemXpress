@@ -32,8 +32,11 @@ To install FemXpress, make sure you need install some dependances following the 
 And in addition to these packages, you also need some python dependences and you can refer to the documentation for details of these packages[requirements.txt](https://github.com/wangxin970829/FemXpress/blob/main/requirements.txt). We fixed the version because the output formats vary a lot with different versions. If you are not able to run them, you can compile them in you system. We only test on these tools on following versions:
 
 samtools version: 1.10 (using htslib 1.10.2-3)
+
 bam-readcount version: v1.0.2
+
 freebayes version version: v1.0.2
+
 
 Install needed packages and FemXpress from zip package
 ```
