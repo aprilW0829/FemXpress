@@ -29,7 +29,6 @@ And you need more details on the dependences, look at [requirements.txt](https:/
 
 Install FemXpress from zip package
 ```
-conda activate FemXpress-env
 wget https://github.com/wangxin970829/FemXpress/archive/refs/heads/main.zip
 unzip main.zip
 cd FemXpress-main/scripts
