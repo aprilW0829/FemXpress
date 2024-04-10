@@ -23,11 +23,18 @@ Subsequently, linkage analysis was performed based on the identified high-confid
 A preprint FemXpress: Systematic Analysis of X Chromosome Inactivation Heterogeneity in Female Single-Cell RNA-Seq Samples provides a detailed overview of the statistical models used in FemXpress. We ask that you cite this paper if you use FemXpress in work that leads to publication.This preprint is used for documentation and citation.
 
 ## Install
-To install FemXpress, make sure you need install some dependances,including [freebayes](https://github.com/freebayes/freebayes), [samtools](https://github.com/samtools/samtools), [bam-readcount](https://github.com/genome/bam-readcount), and some commonly used python packages,including, . You need to make sure these packages were installed beforehand. 
-And you need more details on the dependences, look at [requirements.txt](https://github.com/wangxin970829/FemXpress/blob/main/requirements.txt). 
+You need to create a new environment for FemXpress
+```
+conda create -d FemXpress-env python=3.8
+```
 
+To install FemXpress, make sure you need install some dependances following the instructions of the official tutorial,including [freebayes](https://github.com/freebayes/freebayes), [samtools](https://github.com/samtools/samtools), [bam-readcount](https://github.com/genome/bam-readcount).
+And in addition to these packages, you also need some python dependences and you can refer to the documentation for details of these packages[requirements.txt](https://github.com/wangxin970829/FemXpress/blob/main/requirements.txt). We fixed the version because the output formats vary a lot with different versions. If you are not able to run them, you can compile them in you system. We only test on these tools on following versions:
+samtools version: 1.10 (using htslib 1.10.2-3)
+bam-readcount version: v1.0.2
+freebayes version version: v1.0.2
 
-Install FemXpress from zip package
+Install needed packages and FemXpress from zip package
 ```
 wget https://github.com/wangxin970829/FemXpress/archive/refs/heads/main.zip
 unzip main.zip
@@ -42,7 +49,6 @@ cd /path/to/your/FemXpress-main/
 conda env create -f requirements.txt
 conda activate FemXpress-env
 ```
-
 
 ## Usage
 The current version of FemXpress was only developed based on single-cell sequencing data from 10×Genomics. The details of the input of FemXpress can be found in the [input](https://github.com/wangxin970829/FemXpress/tree/main/test/input)
