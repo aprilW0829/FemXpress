@@ -62,7 +62,7 @@ According to how it works, it needs to have the following input files: BAM file 
 
 Run the following arguments for command-line help:
 ```
-$ python $PATH:${path}/scripts/FemXpress_1.py --help
+$ python ${path}/scripts/FemXpress_1.py --help
 usage: FemXpress_1.py [-h] [-b BAM] [-g GENOME] [-m META] [-r RMSK] [-v]
 
 preprocess of FemXpress, Example: python FemXpress_1.py -b possorted_genome_bam.bam -g genome.fa -e meta.txt -r rmsk.txt
@@ -83,7 +83,7 @@ optional arguments:
 Run FemXpress using the barcode-SNP matrix obtained in the previous step. For instance:
 ```
 $ python FemXpress_2.py --help
-usage: python $PATH:${path}/scripts/FemXpress_2.py [-h] [-m MATRIX] [-a ANNOT] [-v]
+usage: python ${path}/scripts/FemXpress_2.py [-h] [-m MATRIX] [-a ANNOT] [-v]
 
 inference of FemXpress, Example: python FemXpress_2.py -m result_matrix4.csv -a /data2/wangxin/database/genome/gencode.vM25.chr_patch_hapl_scaff.basic.annotation.gtf > nohup_real.txt
 
