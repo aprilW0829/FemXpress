@@ -1,0 +1,7 @@
+README.md
+setup.py
+FemXpress.egg-info/PKG-INFO
+FemXpress.egg-info/SOURCES.txt
+FemXpress.egg-info/dependency_links.txt
+FemXpress.egg-info/requires.txt
+FemXpress.egg-info/top_level.txt
