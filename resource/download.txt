@@ -1,0 +1,2 @@
+human gene annotation gtf can be downloaded from gencode:
+https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_45/gencode.v45.basic.annotation.gtf.gz
