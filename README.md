@@ -38,21 +38,21 @@ bam-readcount version: v1.0.2
 freebayes version version: v1.0.2
 
 
-Install needed python packages and FemXpress from zip package
+Set up conda environment and install the required packages for FemXpress
 ```
 wget https://github.com/wangxin970829/FemXpress/archive/refs/heads/main.zip
 unzip main.zip
-cd FemXpress-main/scripts
-export PATH=$PATH:/path/to/your/FemXpress-main/scripts/FemXpress_1.py
-export PATH=$PATH:/path/to/your/FemXpress-main/scripts/FemXpress_2.py
-```
-
-Set up conda environment and install the required packages for FemXpress
-```
 cd /path/to/your/FemXpress-main/
 conda env create -f requirements.txt
 conda activate FemXpress-env
+cd FemXpress-main/scripts
+path="XXX/FemXpress-main"  # where FemXpress is downloaded
+export PATH=$PATH:${path}/scripts/FemXpress_1.py
+export PATH=$PATH:${path}/scripts/FemXpress_2.py
+python ${path}/scripts/FemXpress_1.py --help`
+python ${path}/scripts/FemXpress_2.py --help`
 ```
+
 
 ## Usage
 The current version of FemXpress was only developed based on single-cell sequencing data from 10×Genomics. The details of the input of FemXpress can be found in the [input](https://github.com/wangxin970829/FemXpress/tree/main/test/input)
