@@ -25,7 +25,7 @@ A preprint FemXpress: Systematic Analysis of X Chromosome Inactivation Heterogen
 ## Install
 You need to create a new environment for FemXpress
 ```
-conda create -d FemXpress-env python=3.8
+conda create -n FemXpress-env python=3.8
 ```
 
 To install FemXpress, make sure you installed some dependances following the instructions of the official tutorial,including [freebayes](https://github.com/freebayes/freebayes), [samtools](https://github.com/samtools/samtools), [bam-readcount](https://github.com/genome/bam-readcount).
