@@ -55,7 +55,7 @@ The current version of FemXpress was only developed based on single-cell sequenc
 It consists of two running steps:
 ### Step 1: 
 To obtain pre-processed barcode-SNP matrix based on the alignment bam file from cellranger’s output.
-According to how it works, it needs to have the following input files: BAM file for CellRanger alignment output(possorted_genome_bam.bam), cell tag file (which can be meta information file that has been processed by Seurat), reference genome sequence file(.fa), and rmsk file. For instance:
+According to how it works, it needs to have the following input files: BAM file for CellRanger alignment output(possorted_genome_bam.bam), cell tag file (which can be meta information file that has been processed by Seurat, barcodes's format located in the first column need to be the format which is the same as the bam' CB tag, such as:ACGCGCGCTACGCGCT-1), reference genome sequence file(.fa), and rmsk file(the five and six columns need to be the location of rmsk sequencess). For instance:
 
 Run the following arguments for command-line help:
 ```
