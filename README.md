@@ -79,8 +79,8 @@ optional arguments:
 ### Step 2: 
 Run FemXpress using the barcode-SNP matrix obtained in the previous step. For instance:
 ```
-$ python FemXpress_2.py --help
-usage: python ${path}/scripts/FemXpress_2.py [-h] [-m MATRIX] [-a ANNOT] [-v]
+$ python ${path}/scripts/FemXpress_2.py --help
+usage: python FemXpress_2.py [-h] [-m MATRIX] [-a ANNOT] [-v]
 
 inference of FemXpress, Example: python FemXpress_2.py -m result_matrix4.csv -a /data2/wangxin/database/genome/gencode.vM25.chr_patch_hapl_scaff.basic.annotation.gtf > nohup_real.txt
 
