@@ -94,6 +94,9 @@ optional arguments:
 
 ```
 
+...will produce multiple files in the subdirectory ./FemXpress/inference, clusters_vote_method_1.tsv is the final inference file for each cell, escape_os_list_method_3.txt is the inferenced new potential escape sites, the genes in which these sites are located are potential and new escape genes inferenced. And there are several other tmpp files, for example: genotypes.tsv is the sites that are used to establish the chain relationship.
+ 
+
 It provides one visulization step:
 You can visulization FemXpress's inference result using [the procedures]() using txt in the previous step. For instance:
 ```
