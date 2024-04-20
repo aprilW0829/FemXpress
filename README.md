@@ -35,7 +35,7 @@ bam-readcount version: v1.0.2
 freebayes version version: v1.0.2
 
 
-Set up conda environment and install the required packages for FemXpress
+Set up conda environment and install the required python packages for FemXpress
 ```
 wget https://github.com/wangxin970829/FemXpress/archive/refs/heads/main.zip
 unzip main.zip
