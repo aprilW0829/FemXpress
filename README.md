@@ -98,7 +98,7 @@ optional arguments:
  
 
 It provides one visulization step:
-You can visulization FemXpress's inference result using [the procedures](https://github.com/wangxin970829/FemXpress/blob/main/scripts/FemXpress_visulization.R) using txt in the previous step. For instance:
+You can visulization FemXpress's inference result using [the procedures](https://github.com/wangxin970829/FemXpress/blob/main/scripts/FemXpress_visulization.R) and files produced in the previous step. For instance:
 ```
 $ Rscript ${path}/scripts/FemXpress_visulization.R --help
 Usage: subclusterX_visulization.R [options]
