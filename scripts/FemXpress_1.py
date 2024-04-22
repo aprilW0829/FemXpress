@@ -74,20 +74,24 @@ def all_path(dirname,defined_txt_str):
 #### get index for all bam and get chrX bam
 input_bam=args.bam
 
-subprocess.run(["samtools", "index", input_bam, "-@ 10"])
+## define current directory
+current_directory = os.path.dirname(os.path.abspath(__file__))
+parent_directory = os.path.dirname(current_directory)
+
+subprocess.run(["parent_directory/apps/samtools", "index", input_bam, "-@ 10"])
 print('create index for all.bam!')
 
 #### get snp for chrX
 ## chrX
 output_bam=tmp_dir+'/output_chrX.bam'
 chromosome='chrX'
-command2 = ["samtools", "view", "-b", "-h", input_bam, chromosome]
+command2 = ["parent_directory/apps/samtools", "view", "-b", "-h", input_bam, chromosome]
 with open(output_bam, "w") as output:
     process = subprocess.Popen(command2, stdout=output)
     process.wait()
 print('get chrX.bam!')
 
-subprocess.run(["samtools", "index", output_bam, "-@ 10"])
+subprocess.run(["parent_directory/apps/samtools", "index", output_bam, "-@ 10"])
 print('create index for chrX.bam!')
 
 
@@ -149,7 +153,7 @@ print('get filtered bam done!')
 #bam_file=output_bam1
 bam_file=tmp_dir+'/filtered_chrX.bam'
 #bam_file=tmp_dir+'/filtered_chrX.bam'
-subprocess.run(["samtools", "index", bam_file, "-@ 8"])
+subprocess.run(["parent_directory/apps/samtools", "index", bam_file, "-@ 8"])
 print('create index for filtered_chrX.bam!')
 
 
@@ -159,7 +163,7 @@ bam_file=tmp_dir+'/filtered_chrX.bam'
 output_vcf=tmp_dir+'/filtered_freebayes.vcf'
 ### freebayes version:0.9
 print('call SNP using freebyes,start!')
-cmd2 = f"freebayes -f {ref_file} {bam_file} > {output_vcf}"
+cmd2 = f"parent_directory/apps/freebayes-1.3.6 -f {ref_file} {bam_file} > {output_vcf}"
 output=subprocess.check_output(cmd2,shell=True)
 #subprocess.run(['freebayes','-f',ref_file,bam_file,'>',output_vcf])
 #with open('w') as outfile:
@@ -180,7 +184,6 @@ for record in vcf_reader:
         else:
             output_vcf.write_record(record)
 output_vcf.close()
-
 
 ### get bed of filtered snp vcf
 input_vcf=tmp_dir+'/filtered_freebayes_snps.vcf'
@@ -381,7 +384,7 @@ for outfile in barcode_files.values():
 all_path(inter_base_dir,'bam')
 for i in sgtxt_list:
     small_bam_file=inter_base_dir+'/'+i
-    subprocess.run(["samtools", "index", small_bam_file, "-@ 10"])
+    subprocess.run(["parent_directory/apps/samtools", "index", small_bam_file, "-@ 10"])
     #print('create index for '+i+' done!')
 print('create index for all the barcodes, done!')
 
@@ -397,7 +400,7 @@ bed_file2=tmp_dir+'/filtered_freebayes_snps.bed'
 for bam_file in bam_files:
     bam_file1=inter_base_dir+'/'+bam_file
     barcode=bam_file[:-4]
-    command = f"bam-readcount -w 0 -f {reference_fa} {bam_file1} -l {bed_file2} | awk 'BEGIN{{FS=OFS=\"\t\"}}{{split($6,A,\":\");split($7,C,\":\");split($8,G,\":\");split($9,T,\":\");print $1\";\"$2,A[2]\";\"C[2]\";\"G[2]\";\"T[2],$3,$4}}' > {inter_base_dir}/{barcode}_base_count.txt"
+    command = f"parent_directory/apps/bam-readcount -w 0 -f {reference_fa} {bam_file1} -l {bed_file2} | awk 'BEGIN{{FS=OFS=\"\t\"}}{{split($6,A,\":\");split($7,C,\":\");split($8,G,\":\");split($9,T,\":\");print $1\";\"$2,A[2]\";\"C[2]\";\"G[2]\";\"T[2],$3,$4}}' > {inter_base_dir}/{barcode}_base_count.txt"
     subprocess.run(command,shell=True)
     #print('get '+barcode+' bam base count done!')
 print('get all barcode bam\'s base count done!')
