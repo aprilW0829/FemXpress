@@ -34,6 +34,7 @@ freebayes version version: v1.0.2/v1.3.6
 
 
 And in addition to these packages above, you also need some python dependences, you can refer to the documentation for details of these packages[requirements.txt] (https://github.com/wangxin970829/FemXpress/blob/main/requirements.txt) following the steps below.
+
 Set up conda environment and install the required python packages for FemXpress
 ```
 wget https://github.com/wangxin970829/FemXpress/archive/refs/heads/main.zip
