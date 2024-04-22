@@ -24,9 +24,7 @@ You need to create a new environment for FemXpress
 ```
 conda create -n FemXpress-env python=3.8
 ```
-
-To install FemXpress, make sure you have installed some dependances following the instructions of the official tutorial,including [freebayes](https://github.com/freebayes/freebayes), [samtools](https://github.com/samtools/samtools), [bam-readcount](https://github.com/genome/bam-readcount).
-And in addition to these packages, you also need some python dependences, you can refer to the documentation for details of these packages[requirements.txt](https://github.com/wangxin970829/FemXpress/blob/main/requirements.txt). We fixed the version because the output formats vary a lot with different versions. If you are not able to run them, you can compile them in you system. We only test on these tools on following versions:
+!Note We have put the binary compatibility tools including [freebayes](https://github.com/freebayes/freebayes), [samtools](https://github.com/samtools/samtools), [bam-readcount](https://github.com/genome/bam-readcount). in the apps folder. We fixed the version because the output formats vary a lot with different versions. And in addition to these packages, you also need some python dependences, you can refer to the documentation for details of these packages[requirements.txt](https://github.com/wangxin970829/FemXpress/blob/main/requirements.txt). We fixed the version because the output formats vary a lot with different versions. If you are not able to run them, you can compile them in you system. We only test on these tools on following versions:
 
 samtools version: 1.10 (using htslib 1.10.2-3)
 
