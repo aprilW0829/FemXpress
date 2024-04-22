@@ -32,7 +32,7 @@ samtools version: 1.10 (using htslib 1.10.2-3)
 
 bam-readcount version: v1.0.2
 
-freebayes version version: v1.0.2
+freebayes version version: v1.0.2/v1.3.6
 
 
 Set up conda environment and install the required python packages for FemXpress
