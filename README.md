@@ -42,6 +42,7 @@ unzip main.zip
 cd FemXpress-main/
 conda activate FemXpress-env
 pip install -r requirements.txt
+chmod 755 apps/*
 cd scripts
 path="XXX/FemXpress-main"  # where FemXpress is downloaded
 python ${path}/scripts/FemXpress_1.py --help`
