@@ -34,16 +34,16 @@ for dir_path in dir_paths:
 #fin = open(sys.argv[1], "r")
 fin = open(args.matrix,'r')
 #f_pos_gene = open("pos_gene_map.txt", "r")
-fout_1 = open("clusters_vote_method_1.tsv", "w")
-fout_2 = open("clusters_vote_method_2.tsv", "w")
-fout_3 = open("clusters_vote_method_3.tsv", "w")
-fout_linkage = open("linkages.tsv", "w")
-fout_genotype = open("genotypes.tsv", "w")
+fout_1 = open(inference_dir+"/clusters_vote_method_1.tsv", "w")
+fout_2 = open(inference_dir+"/clusters_vote_method_2.tsv", "w")
+fout_3 = open(inference_dir+"/clusters_vote_method_3.tsv", "w")
+fout_linkage = open(inference_dir+"/linkages.tsv", "w")
+fout_genotype = open(inference_dir+"/genotypes.tsv", "w")
 #fout_balance = open("balance.tsv", "w")
 #fout_all_loci = open("all_loci.tsv", "w")
 #fout_escape_1 = open("escape_gene_list_method_1.txt", "w")
 #fout_escape_2 = open("escape_gene_list_method_2.txt", "w")
-fout_escape_3 = open("escape_pos_list_method_3.txt", "w")
+fout_escape_3 = open(inference_dir+"/escape_pos_list_method_3.txt", "w")
 
 P_THRES_1 = 0.3
 P_THRES_2 = 0.4
@@ -1675,7 +1675,7 @@ else:
 
     count_list = []
     for n in range(len(method_1_all_results)):
-        fout_result = open("clusters_result_"+str(n)+".tsv", "w")
+        fout_result = open(inference_dir+"/clusters_result_"+str(n)+".tsv", "w")
         count_0 = 0
         count_1 = 0
         # fout_test = open("test/cluster_result_round_"+str(n), "w")
