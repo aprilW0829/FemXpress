@@ -39,7 +39,7 @@ Set up conda environment and install the required python packages for FemXpress
 ```
 wget https://github.com/wangxin970829/FemXpress/archive/refs/heads/main.zip
 unzip main.zip
-cd /path/to/your/FemXpress-main/
+cd FemXpress-main/
 pip install -r requirements.txt
 conda activate FemXpress-env
 cd FemXpress-main/scripts
