@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 #!usr/bin/python3
 
+import os
 import sys, math
 import numpy as np
 import scipy.stats as stats
