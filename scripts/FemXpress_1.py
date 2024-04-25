@@ -1,5 +1,3 @@
-#!usr/bin/python3
-
 from Bio import SeqIO
 import subprocess
 import pysam
@@ -22,12 +20,12 @@ import chardet
 
 
 parser = argparse.ArgumentParser(description='preprocess of FemXpress,\nExample:python FemXpress_1.py -b possorted_genome_bam.bam -g genome.fa -e meta.txt -r rmsk.txt')
-    
+
 parser.add_argument("-b","--bam", type=str,help="input bam file from CellRanger output")
 parser.add_argument("-g","--genome",type=str,help="input genome")
 parser.add_argument("-e","--meta",type=str,help="input meta information of barcodes")
 parser.add_argument("-r","--rmsk",type=str,help="rmsk file")
-parser.add_argument("-v", "--verbose", action="store_true", dest="verbose", default=False, help="print verbose output")   
+parser.add_argument("-v", "--verbose", action="store_true", dest="verbose", default=False, help="print verbose output")
 args=parser.parse_args()
 
 #print(args.bam)
@@ -69,29 +67,30 @@ def all_path(dirname,defined_txt_str):
                 if i.endswith(defined_txt_str):
                     sgtxt_list.append(i)
 
+#### define locations of tools
+current_dir = os.path.dirname(os.path.realpath(__file__))
+samtools = os.path.join(current_dir, '..', 'apps', 'samtools')
+bam_readcount = os.path.join(current_dir, '..', 'apps', 'bam-readcount')
+freebayes = os.path.join(current_dir, '..', 'apps', 'freebayes')
 
 ################################################# step1:
 #### get index for all bam and get chrX bam
 input_bam=args.bam
 
-## define current directory
-current_directory = os.path.dirname(os.path.abspath(__file__))
-parent_directory = os.path.dirname(current_directory)
-
-subprocess.run(["samtools", "index", input_bam, "-@ 10"])
+subprocess.run([samtools, "index", input_bam])
 print('create index for all.bam!')
 
 #### get snp for chrX
 ## chrX
 output_bam=tmp_dir+'/output_chrX.bam'
 chromosome='chrX'
-command2 = ["samtools", "view", "-b", "-h", input_bam, chromosome]
+command2 = [samtools, "view", "-b", "-h", input_bam, chromosome]
 with open(output_bam, "w") as output:
     process = subprocess.Popen(command2, stdout=output)
     process.wait()
 print('get chrX.bam!')
 
-subprocess.run(["samtools", "index", output_bam, "-@ 10"])
+subprocess.run([samtools, "index", output_bam])
 print('create index for chrX.bam!')
 
 
@@ -153,7 +152,7 @@ print('get filtered bam done!')
 #bam_file=output_bam1
 bam_file=tmp_dir+'/filtered_chrX.bam'
 #bam_file=tmp_dir+'/filtered_chrX.bam'
-subprocess.run(["samtools", "index", bam_file, "-@ 8"])
+subprocess.run([samtools, "index", bam_file])
 print('create index for filtered_chrX.bam!')
 
 
@@ -163,7 +162,7 @@ bam_file=tmp_dir+'/filtered_chrX.bam'
 output_vcf=tmp_dir+'/filtered_freebayes.vcf'
 ### freebayes version:0.9
 print('call SNP using freebyes,start!')
-cmd2 = f"freebayes -f {ref_file} {bam_file} > {output_vcf}"
+cmd2 = f"{freebayes} -f {ref_file} {bam_file} > {output_vcf}"
 output=subprocess.check_output(cmd2,shell=True)
 #subprocess.run(['freebayes','-f',ref_file,bam_file,'>',output_vcf])
 #with open('w') as outfile:
@@ -184,6 +183,7 @@ for record in vcf_reader:
         else:
             output_vcf.write_record(record)
 output_vcf.close()
+
 
 ### get bed of filtered snp vcf
 input_vcf=tmp_dir+'/filtered_freebayes_snps.vcf'
@@ -353,8 +353,8 @@ for a in fo3_dic.keys():
 ############################################ single barcode's bam split by barcode from filtered_chrX.bam,filtering snp by judge base counts in all barcodes' ratio,plotting unfiltered snps' distribution and filtered snps' distribution,get final snp-barcode matrix
 #### set to incerease txt number at the same time
 soft_limit, hard_limit = resource.getrlimit(resource.RLIMIT_NOFILE)
-#print("txt number's limit:", soft_limit, hard_limit)
-new_limit = 65535
+print("txt number's limit:", soft_limit, hard_limit)
+new_limit = 63655
 resource.setrlimit(resource.RLIMIT_NOFILE, (new_limit, hard_limit))
 soft_limit, hard_limit = resource.getrlimit(resource.RLIMIT_NOFILE)
 #print("new txt number's limit:", soft_limit, hard_limit)
@@ -384,7 +384,7 @@ for outfile in barcode_files.values():
 all_path(inter_base_dir,'bam')
 for i in sgtxt_list:
     small_bam_file=inter_base_dir+'/'+i
-    subprocess.run(["samtools", "index", small_bam_file, "-@ 10"])
+    subprocess.run([samtools, "index", small_bam_file])
     #print('create index for '+i+' done!')
 print('create index for all the barcodes, done!')
 
@@ -400,7 +400,7 @@ bed_file2=tmp_dir+'/filtered_freebayes_snps.bed'
 for bam_file in bam_files:
     bam_file1=inter_base_dir+'/'+bam_file
     barcode=bam_file[:-4]
-    command = f"bam-readcount -w 0 -f {reference_fa} {bam_file1} -l {bed_file2} | awk 'BEGIN{{FS=OFS=\"\t\"}}{{split($6,A,\":\");split($7,C,\":\");split($8,G,\":\");split($9,T,\":\");print $1\";\"$2,A[2]\";\"C[2]\";\"G[2]\";\"T[2],$3,$4}}' > {inter_base_dir}/{barcode}_base_count.txt"
+    command = f"{bam_readcount} -w 0 -f {reference_fa} {bam_file1} -l {bed_file2} | awk 'BEGIN{{FS=OFS=\"\t\"}}{{split($6,A,\":\");split($7,C,\":\");split($8,G,\":\");split($9,T,\":\");print $1\";\"$2,A[2]\";\"C[2]\";\"G[2]\";\"T[2],$3,$4}}' > {inter_base_dir}/{barcode}_base_count.txt"
     subprocess.run(command,shell=True)
     #print('get '+barcode+' bam base count done!')
 print('get all barcode bam\'s base count done!')
@@ -470,7 +470,7 @@ print('get merged_base_count for each barcode done!')
 #        else:
 #            print('checked, OK!')
 ##### create index for split barcode's bam
-    
+
 
 ############################################# step4:
 #all_path(inter_base_dir,'-1_base_count.txt')
@@ -631,8 +631,7 @@ for i in dfi:
     snp_loci=i[0]+';'+i[1]
     snp_sequence_dic[snp_loci]=i[3].strip('\n')
 
-# matrix1:freebayes filtering using simple repeat ,updown20bp sequence info;
-# matrix2:after matrix1,using ratio and reads to filter
+
 df=open(tmp_dir+'/each_snp_coverage_barcodes.txt','r')
 df2=open(tmp_dir+'/each_snp_coverage_reads.txt','r')
 #dfo=open(tmp_dir+'/each_snp_coverage_barcodes_filtered.txt','w')
@@ -653,12 +652,12 @@ for i in df2:
     #print(reads)
     reads_value_list.extend((i[1],i[2],i[3],i[4].strip('\n')))
     reads_value_list = list(map(lambda x: int(x), reads_value_list))
-    #print(reads_value_list)
+    print(reads_value_list)
     max_index = reads_value_list.index(max(reads_value_list))
     second_max_index = reads_value_list.index(sorted(reads_value_list)[-2])
     max_value = reads_value_list[max_index]
     second_max_value = reads_value_list[second_max_index]
-    #print(str(max_value)+'\t'+str(second_max_value))
+    print(str(max_value)+'\t'+str(second_max_value))
     if second_max_value != 0:
         if max_index > second_max_index:
             result = int(reads_value_list[second_max_index])/int(reads_value_list[max_index])
@@ -671,6 +670,7 @@ for i in df2:
 def get_count_reads_ratio(f):
     for i in f:
         j=i
+        print(j)
         i=i.split('\t')
         global value_list
         global max_index
@@ -682,7 +682,7 @@ def get_count_reads_ratio(f):
         #print(reads)
         value_list.extend((i[1],i[2],i[3],i[4].strip('\n')))
         value_list = list(map(lambda x: int(x), value_list))
-        #print(value_list)
+        print(value_list)
         max_index = value_list.index(max(value_list))
         second_max_index = value_list.index(sorted(value_list)[-2])
         max_value = value_list[max_index]
@@ -702,12 +702,14 @@ def get_count_reads_ratio(f):
             else:
                 value_ratio3.append(result)
                 value_ratio3_dic[i[0]]=str(result)+'\t'+reads
-            value_list=[]
+            #value_list=[]
             #print(i[0]+'\t'+str(result))
-    #print(value_ratio1)
+            value_list =[]
+    print(value_ratio1)
     return value_ratio1,value_ratio1_dic,value_ratio3,value_ratio3_inverse,value_ratio3_dic,value_ratio3_inverse_dic
 
 get_count_reads_ratio(df)
+
 
 
 median = np.percentile(value_ratio1, 50)
@@ -961,7 +963,6 @@ filtered_df4.to_csv(result_dir+'/result_matrix4.csv',sep='\t',mode='w',header=Tr
 print('get filtered barcode-snp matrix2, matrix3, matrix4 done!')
 
 print('preprocess data,done!')
-
 
 
 def delete_files_in_directory(directory, file_endfix):
