@@ -70,7 +70,7 @@ optional arguments:
   -b BAM, --bam BAM     input bam file from CellRanger output
   -g GENOME, --genome GENOME
                         input genome
-  -m META, --meta META  input meta information of barcodes
+  -e META, --meta META  input meta information of barcodes
   -r RMSK, --rmsk RMSK  rmsk file
   -v, --verbose         print verbose output
 ```
