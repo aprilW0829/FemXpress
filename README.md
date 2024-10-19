@@ -61,7 +61,7 @@ According to how it works, it needs to have the following input files: BAM file 
 Run the following arguments for command-line help:
 ```
 $ python ${path}/scripts/FemXpress_1.py --help
-usage: FemXpress_1.py [-h] [-b BAM] [-g GENOME] [-m META] [-r RMSK] [-v] [-n sample]
+usage: FemXpress_1.py [-h] [-b BAM] [-g GENOME] [-m META] [-r RMSK] [-n sample] [-v]
 
 preprocess of FemXpress, Example: python FemXpress_1.py -b possorted_genome_bam.bam -g genome.fa -e meta.txt -r rmsk.txt -n sample
 
