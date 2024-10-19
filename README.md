@@ -61,9 +61,9 @@ According to how it works, it needs to have the following input files: BAM file 
 Run the following arguments for command-line help:
 ```
 $ python ${path}/scripts/FemXpress_1.py --help
-usage: FemXpress_1.py [-h] [-b BAM] [-g GENOME] [-m META] [-r RMSK] [-v]
+usage: FemXpress_1.py [-h] [-b BAM] [-g GENOME] [-m META] [-r RMSK] [-v] [-n sample]
 
-preprocess of FemXpress, Example: python FemXpress_1.py -b possorted_genome_bam.bam -g genome.fa -e meta.txt -r rmsk.txt
+preprocess of FemXpress, Example: python FemXpress_1.py -b possorted_genome_bam.bam -g genome.fa -e meta.txt -r rmsk.txt -n sample
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -72,6 +72,7 @@ optional arguments:
                         input genome
   -e META, --meta META  input meta information of barcodes
   -r RMSK, --rmsk RMSK  rmsk file
+  -n sample, --sample SAMPLE sample_name 
   -v, --verbose         print verbose output
 ```
 
@@ -81,9 +82,9 @@ optional arguments:
 Run FemXpress using the barcode-SNP matrix obtained in the previous step. For instance:
 ```
 $ python ${path}/scripts/FemXpress_2.py --help
-usage: python FemXpress_2.py [-h] [-m MATRIX] [-a ANNOT] [-v]
+usage: python FemXpress_2.py [-h] [-m MATRIX] [-a ANNOT] [-n sample] [-v]
 
-inference of FemXpress, Example: python FemXpress_2.py -m result_matrix4.csv -a /data2/wangxin/database/genome/gencode.vM25.chr_patch_hapl_scaff.basic.annotation.gtf > nohup_real.txt
+inference of FemXpress, Example: python FemXpress_2.py -m result_matrix4.csv -a /data2/wangxin/database/genome/gencode.vM25.chr_patch_hapl_scaff.basic.annotation.gtf -n sample > nohup_real.txt
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -91,6 +92,8 @@ optional arguments:
                         output result_matrix4.csv generated in the previous step
   -a ANNOT, --annot ANNOT
                         gene annotation txt[gtf]
+  -n sample, --sample SAMPLE
+                        sample_name
   -v, --verbose         print verbose output
 
 ```
