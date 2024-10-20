@@ -106,7 +106,7 @@ def get_chrX_bam(input_bam,output_bam):
     output_bam=tmp_dir+'/output_chrX.bam'
     chromosome='chrX'
     command2 = [samtools, "view", "-b", "-h", input_bam, chromosome]
-    with open(iutput_bam, "w") as output:
+    with open(iuput_bam, "w") as output:
         process = subprocess.Popen(command2, stdout=output)
         process.wait()
     print('get chrX.bam!')
