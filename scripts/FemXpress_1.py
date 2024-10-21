@@ -880,7 +880,7 @@ def delete_files_in_directory(directory, file_endfix):
         if filename.endswith(file_endfix):
             file_path = os.path.join(directory, filename)
             os.remove(file_path)
-            print(f"Deleted file: {file_path}")
+            #print(f"Deleted file: {file_path}")
 
 
 
