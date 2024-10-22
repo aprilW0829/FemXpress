@@ -72,7 +72,8 @@ optional arguments:
                         input genome
   -e META, --meta META  input meta information of barcodes
   -r RMSK, --rmsk RMSK  rmsk file
-  -n sample, --sample SAMPLE sample_name 
+  -n SAMPLE, --sample SAMPLE
+                        sample name
   -v, --verbose         print verbose output
 ```
 
@@ -92,10 +93,9 @@ optional arguments:
                         output result_matrix4.csv generated in the previous step
   -a ANNOT, --annot ANNOT
                         gene annotation txt[gtf]
-  -n sample, --sample SAMPLE
-                        sample_name
+  -n SAMPLE, --sample SAMPLE
+                        sample name
   -v, --verbose         print verbose output
-
 ```
 
 ...will produce multiple files in the subdirectory ./FemXpress/inference, clusters_vote_method_1.tsv is the final inference file for each cell, escape_pos_list_method_3.txt is the inferenced new potential escape sites, the genes in which these sites are located are potential and new escape genes inferenced. And there are several other tmp files, for example: genotypes.tsv is the sites that are used to establish the chain relationship.
