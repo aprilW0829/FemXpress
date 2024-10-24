@@ -2,7 +2,7 @@
 
 # step1:
 # data preprocess
-python FemXpress_1.py -b possorted_genome_bam.bam -g genome.fa -e meta.txt -r rmsk.txt -n sample > nohup_real1.txt
+python FemXpress_1.py -b possorted_genome_bam.bam -g genome.fa -e meta.txt -r rmsk.txt -n sample -c 2 > nohup_real1.txt
 
 # step2:
 # FemXpress inference clustering and escape genes
