@@ -63,7 +63,7 @@ Run the following arguments for command-line help:
 $ python ${path}/scripts/FemXpress_1.py --help
 usage: FemXpress_1.py [-h] [-b BAM] [-g GENOME] [-m META] [-r RMSK] [-n sample] [-v]
 
-preprocess of FemXpress, Example: python FemXpress_1.py -b possorted_genome_bam.bam -g genome.fa -e meta.txt -r rmsk.txt -n sample
+preprocess of FemXpress, Example: python FemXpress_1.py -b possorted_genome_bam.bam -g genome.fa -e meta.txt -r rmsk.txt -n sample -c 2
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -74,6 +74,8 @@ optional arguments:
   -r RMSK, --rmsk RMSK  rmsk file
   -n SAMPLE, --sample SAMPLE
                         sample name
+  -c MINIMUM_COUNTS, --minimum_counts MINIMUM_COUNTS
+                        minimum counts supporting second largest base, default: 2
   -v, --verbose         print verbose output
 ```
 
