@@ -9,7 +9,7 @@ import random
 import argparse
 import os
 
-parser = argparse.ArgumentParser(description='inference of FemXpress,\nExample: python FemXpress_2.py -m result_matrix4.csv -a /data2/wangxin/database/genome/gencode.vM25.chr_patch_hapl_scaff.basic.annotation.gtf > nohup_real.txt')
+parser = argparse.ArgumentParser(description='inference of FemXpress,\nExample: python FemXpress_2.py -m result_matrix4.csv -a /data2/wangxin/database/genome/gencode.vM25.chr_patch_hapl_scaff.basic.annotation.gtf -n sample_name > nohup_real.txt')
 parser.add_argument("-m","--matrix", type=str,help="output result_matrix4.csv generated in the previous step")
 parser.add_argument("-a","--annot", type=str,help="gene annotation txt[gtf]")
 parser.add_argument("-n","--sample", type=str,help="sample name")
