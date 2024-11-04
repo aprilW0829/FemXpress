@@ -65,4 +65,4 @@ dependencies:
       - six==1.16.0
       - threadpoolctl==3.5.0
       - zipp==3.20.2
-prefix: /home/jingxi/miniconda3/envs/FemXpress-env
+prefix: FemXpress-env
