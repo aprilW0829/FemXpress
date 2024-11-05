@@ -20,7 +20,7 @@ import codecs
 import chardet
 import shutil
 
-parser = argparse.ArgumentParser(description='preprocess of FemXpress,\nExample:python FemXpress_1.py -b possorted_genome_bam.bam -g genome.fa -e meta.txt -r rmsk.txt')
+parser = argparse.ArgumentParser(description='preprocess of FemXpress,\nExample:python FemXpress_1.py -b possorted_genome_bam.bam -g genome.fa -e meta.txt -r rmsk.txt -n sample_name')
 parser.add_argument("-b","--bam", type=str,help="input bam file from CellRanger output")
 parser.add_argument("-g","--genome",type=str,help="input genome")
 parser.add_argument("-e","--meta",type=str,help="input meta information of barcodes")
