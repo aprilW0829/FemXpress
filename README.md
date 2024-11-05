@@ -59,7 +59,7 @@ FemXpress_PATH="XXX/FemXpress-main"  # where FemXpress is downloaded
 
 cd ${FemXpress_PATH}/test/
 
-unzip input/*gz
+gunzip input/*gz
 
 python ../script/FemXpress_1.py -b ./input/test200000.bam -g ./input/mm10_chrX.fa -e ./input/meta_half.txt -r ./input/mm10_rmsk_test.txt -n test8.0 -c 2 > nohup_real1.txt
 
