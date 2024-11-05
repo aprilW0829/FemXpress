@@ -61,9 +61,9 @@ cd ${FemXpress_PATH}/test/
 
 gunzip input/*gz
 
-python ../script/FemXpress_1.py -b ./input/test200000.bam -g ./input/mm10_chrX.fa -e ./input/meta_half.txt -r ./input/mm10_rmsk_test.txt -n test8.0 -c 2 > nohup_real1.txt
+python ../scripts/FemXpress_1.py -b ./input/test200000.bam -g ./input/mm10_chrX_test.fa -e ./input/meta_half.txt -r ./input/mm10_rmsk_test.txt -n test8.0 -c 2 > nohup_real1.txt
 
-python ../script/FemXpress_2.py -m ./FemXpress/test8.0/result/result_matrix1.csv -a ./input/gencode.vM25.chr_patch_hapl_scaff.basic.annotation.gtf -n test8.0 > nohup_real2.txt
+python ../scripts/FemXpress_2.py -m ./FemXpress/test8.0/result/result_matrix1.csv -a ./input/gencode.vM25.chr_patch_hapl_scaff.basic.annotation.gtf -n test8.0 > nohup_real2.txt
 ```
 
 
