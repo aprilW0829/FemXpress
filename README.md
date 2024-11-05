@@ -54,6 +54,7 @@ python ${path}/scripts/FemXpress_2.py --help
 The current version of FemXpress was only developed based on single-cell sequencing data from 10×Genomics. The details of the input of FemXpress can be found in the [input](https://github.com/wangxin970829/FemXpress/tree/main/test/input)
 
 #### You can run FemXpress using test data as follows:
+```
 FemXpress_PATH={path_to_FemXpress-main}
 
 cd ${FemXpress_PATH}/test/
@@ -63,7 +64,7 @@ unzip *gz
 python ../script/FemXpress_1.py -b ./input/test200000.bam -g ./input/mm10_chrX.fa -e ./input/meta_half.txt -r ./input/mm10_rmsk_test.txt -n test8.0 -c 2 > nohup_real1.txt
 
 python ../script/FemXpress_2.py -m ./FemXpress/test8.0/result/result_matrix1.csv -a ./input/gencode.v44.chr_patch_hapl_scaff.basic.annotation.gtf -n test8.0 > nohup_real2.txt
-
+```
 
 
 It consists of two running steps:
