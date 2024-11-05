@@ -44,9 +44,9 @@ conda activate FemXpress-env
 pip install -r requirements.txt
 chmod 755 apps/*
 cd scripts
-path="XXX/FemXpress-main"  # where FemXpress is downloaded
-python ${path}/scripts/FemXpress_1.py --help
-python ${path}/scripts/FemXpress_2.py --help
+FemXpress_PATH="XXX/FemXpress-main"  # where FemXpress is downloaded
+python ${FemXpress_PATH}/scripts/FemXpress_1.py --help
+python ${FemXpress_PATH}/scripts/FemXpress_2.py --help
 ```
 
 
@@ -55,7 +55,7 @@ The current version of FemXpress was only developed based on single-cell sequenc
 
 #### You can run FemXpress using test data as follows:
 ```
-FemXpress_PATH={path_to_FemXpress-main}
+FemXpress_PATH="XXX/FemXpress-main"  # where FemXpress is downloaded
 
 cd ${FemXpress_PATH}/test/
 
