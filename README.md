@@ -62,7 +62,18 @@ preprocee will produce four barcode-SNP matrix files in the subdirectory ./FemXp
 
 ### Step 2: 
 Process will produce multiple files in the subdirectory ./FemXpress/inference, clusters_vote_method_1.tsv is the final inference file for each cell, escape_pos_list_method_3.txt is the inferenced new potential escape sites, the genes in which these sites are located are potential and new escape genes inferenced. And there are several other tmp files, for example: genotypes.tsv is the sites that are used to establish the chain relationship.
- 
+
+Run script as follows:
+```
+ python FemXpress.py \
+        -b '/possorted_genome_bam.bam' \
+        -g 'mm10.fa' \
+        -e 'mb_brain_meta.txt' \
+        -r 'mm10.rmsk.txt' \
+        -n 'mouse' \
+        -a 'gencode.vM25.chr_patch_hapl_scaff.basic.annotation.gtf' \
+        -c 2
+```
 
 It provides one visulization step:
 You can visulization FemXpress's inference result using [the procedures](https://github.com/wangxin970829/FemXpress/blob/main/scripts/FemXpress_visulization.R) and files produced in the previous step. For instance:
