@@ -45,76 +45,23 @@ pip install -r requirements.txt
 chmod 755 apps/*
 cd scripts
 FemXpress_PATH="XXX/FemXpress-main"  # where FemXpress is downloaded
-python ${FemXpress_PATH}/scripts/FemXpress_1.py --help
-python ${FemXpress_PATH}/scripts/FemXpress_2.py --help
+python ${FemXpress_PATH}/scripts/FemXpress.py --help
+
 ```
 
 
 ## Usage
 The current version of FemXpress was only developed based on single-cell sequencing data from 10×Genomics. The details of the input of FemXpress can be found in the [input](https://github.com/wangxin970829/FemXpress/tree/main/test/input)
 
-#### You can run FemXpress using test data as follows:
-```
-FemXpress_PATH="XXX/FemXpress-main"  # where FemXpress is downloaded
-
-cd ${FemXpress_PATH}/test/
-
-gunzip input/*gz
-
-python ../scripts/FemXpress_1.py -b ./input/test200000.bam -g ./input/mm10_chrX_test.fa -e ./input/meta_half.txt -r ./input/mm10_rmsk_test.txt -n test8.0 -c 2 > nohup_real1.txt
-
-python ../scripts/FemXpress_2.py -m ./FemXpress/test8.0/result/result_matrix1.csv -a ./input/gencode.vM25.chr_patch_hapl_scaff.basic.annotation.gtf -n test8.0 > nohup_real2.txt
-```
-
-
 #### You can run FemXpress using your data. It consists of two running steps:
 ### Step 1: 
 To obtain pre-processed barcode-SNP matrix based on the alignment bam file from cellranger’s output.
 According to how it works, it needs to have the following input files: BAM file for CellRanger alignment output(possorted_genome_bam.bam), cell tag file (which can be meta information file that has been processed by Seurat, barcodes's format located in the first column need to be the format which is the same as the bam' CB tag, such as:ACGCGCGCTACGCGCT-1), reference genome sequence file(.fa), and rmsk file(the five and six columns need to be the location of rmsk sequencess). For instance:
 
-Run the following arguments for command-line help:
-```
-$ python ${path}/scripts/FemXpress_1.py --help
-usage: FemXpress_1.py [-h] [-b BAM] [-g GENOME] [-m META] [-r RMSK] [-n sample] [-v]
-
-preprocess of FemXpress, Example: python FemXpress_1.py -b possorted_genome_bam.bam -g genome.fa -e meta.txt -r rmsk.txt -n sample -c 2
-
-optional arguments:
-  -h, --help            show this help message and exit
-  -b BAM, --bam BAM     input bam file from CellRanger output
-  -g GENOME, --genome GENOME
-                        input genome
-  -e META, --meta META  input meta information of barcodes
-  -r RMSK, --rmsk RMSK  rmsk file
-  -n SAMPLE, --sample SAMPLE
-                        sample name
-  -c MINIMUM_COUNTS, --minimum_counts MINIMUM_COUNTS
-                        minimum counts supporting second largest base, default: 2
-  -v, --verbose         print verbose output
-```
-
-...will produce four barcode-SNP matrix files in the subdirectory ./FemXpress/result, result_matrix4.csv is the final matrix for FemXpress inference as input that based on the SNP sites that are preserved under the strictest and most credible condition.
+preprocee will produce four barcode-SNP matrix files in the subdirectory ./FemXpress/result, result_matrix4.csv is the final matrix for FemXpress inference as input that based on the SNP sites that are preserved under the strictest and most credible condition.
 
 ### Step 2: 
-Run FemXpress using the barcode-SNP matrix obtained in the previous step. For instance:
-```
-$ python ${path}/scripts/FemXpress_2.py --help
-usage: python FemXpress_2.py [-h] [-m MATRIX] [-a ANNOT] [-n sample] [-v]
-
-inference of FemXpress, Example: python FemXpress_2.py -m result_matrix4.csv -a /data2/wangxin/database/genome/gencode.vM25.chr_patch_hapl_scaff.basic.annotation.gtf -n sample > nohup_real.txt
-
-optional arguments:
-  -h, --help            show this help message and exit
-  -m MATRIX, --matrix MATRIX
-                        output result_matrix4.csv generated in the previous step
-  -a ANNOT, --annot ANNOT
-                        gene annotation txt[gtf]
-  -n SAMPLE, --sample SAMPLE
-                        sample name
-  -v, --verbose         print verbose output
-```
-
-...will produce multiple files in the subdirectory ./FemXpress/inference, clusters_vote_method_1.tsv is the final inference file for each cell, escape_pos_list_method_3.txt is the inferenced new potential escape sites, the genes in which these sites are located are potential and new escape genes inferenced. And there are several other tmp files, for example: genotypes.tsv is the sites that are used to establish the chain relationship.
+Process will produce multiple files in the subdirectory ./FemXpress/inference, clusters_vote_method_1.tsv is the final inference file for each cell, escape_pos_list_method_3.txt is the inferenced new potential escape sites, the genes in which these sites are located are potential and new escape genes inferenced. And there are several other tmp files, for example: genotypes.tsv is the sites that are used to establish the chain relationship.
  
 
 It provides one visulization step:
