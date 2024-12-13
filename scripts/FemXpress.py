@@ -36,7 +36,7 @@ def run_script(sample=None, bam=None, genome=None, meta=None, rmsk=None, annot=N
     
     basename = sample
     os.system("mkdir FemXpress/log")
-    '''
+    
     print("######## 01 FemXpress analysis, data preprocess, step1... ########")
     cmd = "python FemXpress_preprocess1.py -b {} -g {} -e {} -r {} -n {} -c {}".format(bam, genome, meta, rmsk, sample, minimum_counts)
     print(cmd)
@@ -48,11 +48,9 @@ def run_script(sample=None, bam=None, genome=None, meta=None, rmsk=None, annot=N
     print(cmd)
     os.system(cmd)
     print("FemXpress preprocess step2 Done in {}s".format(round(time()-start_time, 3)))
-    '''
-    if SNP_qc:
-        matrix = './FemXpress/'+sample+'/result/result_matrix4.csv'
-    else:
-        matrix = './FemXpress/'+sample+'result/result_matrix1.csv'
+    
+
+    matrix = './FemXpress/'+sample+'result/result_matrix4.csv'
     print("######## 02 FemXpress analysis... ########")
     cmd = "python FemXpress_process.py -m {} -a {} -n {} -p {}".format(matrix, annot, sample, parents_genotypes)
     print(cmd)
